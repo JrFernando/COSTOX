@@ -1,0 +1,12 @@
+/* PARA SEPARAR O ICONE DO TEXTO NO DROPDOWN */
+li > a > img{
+  margin-right: 10px;
+}
+img#userPhoto{
+  margin-right: 10px;
+}
+/* MELHORAR A VISUZALIZAÇÃO NO MENU MOBILE*/
+#displayNameMobile{
+  margin-top: -10px;
+  padding-bottom: 60px;
+}
