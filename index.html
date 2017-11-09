@@ -26,6 +26,7 @@
 
             <!-- MENU MOBILE -->
              <ul class="side-nav" id="menu-mobile">
+              <li id="displayNameMobileLogado"></li>
               <li><a id="displayNameMobile"  class="dropdown-button waves-effect" data-beloworigin="false" data-activates="dropdownLogin2"></a></li>
               <!-- <li><a href="sass.html">Sass</a></li>
               <li><a href="badges.html">Components</a></li> -->
@@ -47,6 +48,18 @@
         </ul>
       </header>
       <section id="main">
+
+
+        <!-- ESTRUTURA DO MODAL -->
+        <div id="modalErro" class="modal">
+          <div class="modal-content">
+            <h4 class="red-text">Erro!</h4>
+            <p id="#messageModalErro"></p>
+          </div>
+          <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-red btn-flat red-text">Fechar</a>
+          </div>
+        </div>
       </section>
       <footer>
       </footer>
@@ -59,6 +72,8 @@
       <script>
         //INICIALIZAR MENU MOBILE
         $(".button-collapse").sideNav();
+        //INICIALIZAR MODAL
+        $('.modal').modal();
 
         // Initialize Firebase
         var config = {
@@ -74,6 +89,7 @@
           firebase.auth().onAuthStateChanged(function(user) {
             if(user){
               console.log("Logado");
+              // Materialize.toast("Toast teste", 4000);
               setNameDisplay(user.displayName, user.photoURL);
 
               var lis = document.getElementById('dropdownLogin').getElementsByTagName("li");
@@ -124,6 +140,10 @@
           }).catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
+
+            showModalMessageError(errorCode);
+            console.error(errorCode);
+            console.error(errorMessage);
           });
         }
 
@@ -145,9 +165,34 @@
             var errorCode = error.code;
             var errorMessage = error.message;
 
+            showModalMessageError(errorCode);
             console.error(errorCode);
             console.error(errorMessage);
           });
+        }
+
+        function showModalMessageError(errorCode){
+          var message;
+            switch (errorCode) {
+              case "auth/network-request-failed":
+                message = "Erro na conexão! Por favor verifique sua conexão com a internet e tente novamente."
+                break;
+              case "auth/user-disabled":
+                message = "Usuário bloqueado! Entre contato para solucionar o problema."
+                break;
+              case "auth/internal-error":
+                message = "Ops! Encontramos um problema, tente mais uma vez. Caso o erro persista entre em contato."
+                break;
+              case "auth/account-exists-with-different-credential":
+                message = "Uma conta já existe com o mesmo endereço de e-mail, mas credenciais de login diferentes. Faça login usando um provedor associado a este endereço de e-mail.";
+                break;
+              default:
+                message = "Feche para continuar!"
+            }
+
+          var p = document.getElementById("#messageModalErro");
+          p.innerHTML = message;
+          $("#modalErro").modal("open");
         }
 
         function setNameDisplay(name, url){
@@ -161,16 +206,25 @@
           html += name + "<i class=\"material-icons right\">arrow_drop_down</i></div>";
           userDisplay.innerHTML = html;
 
-          var userDisplay = document.getElementById("displayNameMobile");
+          var userDisplay;
           var html = "<div class=\"valign-wrapper\">";
           // SE O USUÁRIO NÃO ESTIVER LOGADO É MOSTRADO UM ICONE
           // CASO CONTRÁRIO E MOSTRADO A FOTO DO USUÁRIO
           if (url == null || url == ""){
              html += "<i class=\"material-icons left\">account_circle</i>";
-             html += "<p class=\"truncate\">" + name + "</p><i class=\"material-icons right\">arrow_drop_down</i></div>";
+             html += "<p class=\"truncate name\">" + name + "</p><i class=\"material-icons right\">arrow_drop_down</i></div>";
+
+             document.getElementById("displayNameMobileLogado").style.display = "none";
+             document.getElementById("displayNameMobile").style.display = "block";
+             userDisplay = document.getElementById("displayNameMobile");
           } else {
-             html += "<img id=\"userPhoto\" src=\"" + url + "\" class=\"circle responsive-img\" width=\"24px\" heigth=\"24px\">"
-             html += "<p class=\"truncate\">" + name + "</p></div>";
+             html = "<div class=\"user-view\"><div class=\"background\"><img src=\"images/office.jpg\"></div>";
+             html += "<a><img class=\"circle\" src=\"" + url + "\"></a>";
+             html += "<span class=\"lighten-4 white-text name truncate\">" + name +"</span></div>";
+
+             document.getElementById("displayNameMobile").style.display = "none";
+             document.getElementById("displayNameMobileLogado").style.display = "block";
+             userDisplay = document.getElementById("displayNameMobileLogado");
           }
 
           userDisplay.innerHTML = html;
