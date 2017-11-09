@@ -13,7 +13,7 @@
       <header>
         <nav class="teal z-depth-4">
           <div class="nav-wrapper container">
-            <a href="#!" class="brand-logo">Logo COSTOX</a>
+            <a href="#!" class="brand-logo">COSTOX</a>
             <a href="#" data-activates="menu-mobile" class="button-collapse waves-effect"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
               <!-- <li><a href="sass.html">Sass</a></li>
@@ -37,13 +37,13 @@
         <!-- Dados do menu dropdown -->
         <ul id="dropdownLogin" class="dropdown-content">
           <li><a class="waves-effect" onclick="loginGoogle()"><img src="icons/google.svg">Google</a></li>
-          <li><a class="waves-effect" href="#"><img src="icons/facebook.svg">Facebook</a></li>
+          <li><a class="waves-effect" onclick="loginFacebook()"><img src="icons/facebook.svg">Facebook</a></li>
           <li style="display: none"><a class="waves-effect" onclick="logout()">Sair</a></li>
         </ul>
         <!-- Dados do menu dropdown mobile-->
         <ul id="dropdownLogin2" class="dropdown-content">
           <li><a onclick="loginGoogle()"><img src="icons/google.svg">Google</a></li>
-          <li><a href="#"><img src="icons/facebook.svg">Facebook</a></li>
+          <li><a onclick="loginFacebook()"><img src="icons/facebook.svg">Facebook</a></li>
         </ul>
       </header>
       <section id="main">
@@ -73,6 +73,7 @@
 
           firebase.auth().onAuthStateChanged(function(user) {
             if(user){
+              console.log("Logado");
               setNameDisplay(user.displayName, user.photoURL);
 
               var lis = document.getElementById('dropdownLogin').getElementsByTagName("li");
@@ -95,6 +96,7 @@
               //     alert("Verifique o email para continuar!");
               // }
             } else {
+              console.log("Não logado");
               setNameDisplay("Login", "");
 
               var lis = document.getElementById('dropdownLogin').getElementsByTagName("li");
@@ -119,10 +121,32 @@
             var token = result.credential.accessToken;
             var user = result.user;
 
-
           }).catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
+          });
+        }
+
+        // LOGAR COM A CONTA DO FACEBOOK
+        function loginFacebook(){
+          console.log("loginFacebook()");
+          var provider = new firebase.auth.FacebookAuthProvider();
+          provider.setCustomParameters({
+            'display': 'popup'
+          });
+          //firebase.auth().useDeviceLanguage();
+
+          firebase.auth().signInWithPopup(provider).then(function(result) {
+            var token = result.credential.accessToken;
+            var user = result.user;
+
+            console.log(user.displayName + token);
+          }).catch(function(error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+
+            console.error(errorCode);
+            console.error(errorMessage);
           });
         }
 
