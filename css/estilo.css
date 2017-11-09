@@ -10,3 +10,14 @@ img#userPhoto{
   margin-top: -10px;
   padding-bottom: 60px;
 }
+
+/*PARA DEIXAR O RODAPÉ SEMPRE NA PARTE INFERIOR*/
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#main {
+  flex: 1 0 auto;
+}
