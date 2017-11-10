@@ -11,6 +11,27 @@ img#userPhoto{
   padding-bottom: 60px;
 }
 
+.brand-logo img{
+  width: 100px;
+  margin-top: 5px;
+}
+
+.dropdown-content li>a{
+  color: #2196f3;
+}
+
+.col{
+  margin-top: 30px;
+}
+/*.carousel {
+  /*margin-top: 20px;
+  margin-bottom: 10px;
+}
+.carousel-item img{
+  height: 500px;
+
+}*/
+
 /*PARA DEIXAR O RODAPÉ SEMPRE NA PARTE INFERIOR*/
 body {
   display: flex;
