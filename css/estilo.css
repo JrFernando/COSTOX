@@ -16,13 +16,31 @@ img#userPhoto{
   margin-top: 5px;
 }
 
+@media only screen and (max-width: 600px){
+  .brand-logo img{
+    width: 90px;
+    margin-top: 5px;
+  }
+}
+
 .dropdown-content li>a{
   color: #2196f3;
 }
 
-.col{
+.row{
   margin-top: 30px;
 }
+
+/*.col{
+  margin-top: 30px;
+}
+
+@media only screen and (max-width: 600px){
+  .col{
+    margin-top: 10px;
+  }
+}*/
+
 /*.carousel {
   /*margin-top: 20px;
   margin-bottom: 10px;
@@ -31,6 +49,10 @@ img#userPhoto{
   height: 500px;
 
 }*/
+
+span.card-title{
+  text-align: center;
+}
 
 /*PARA DEIXAR O RODAPÉ SEMPRE NA PARTE INFERIOR*/
 body {
