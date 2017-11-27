@@ -11,7 +11,7 @@
     </head>
     <body>
       <header>
-        <nav class="blue z-depth-3">
+        <nav class="blue z-depth-1">
           <div class="nav-wrapper container">
             <a href="" class="brand-logo"><img src="images/logo-labmol.png" alt="Logo LabMol"/></a>
             <a href="#" data-activates="menu-mobile" class="button-collapse waves-effect"><i class="material-icons">menu</i></a>
@@ -58,30 +58,36 @@
 
       <div class="row">
         <div class="col s12 m4">
-            <div class="card yellow accent-3 z-depth-1 hoverable">
-                <div class="card-content black-text">
+            <div class="card blue accent-3 z-depth-1 hoverable">
+              <a href="costox.html">
+              <div class="card-content black-text">
                   <span class="card-title"><strong>COSTOX</strong></span>
                   <p>I am a very simple card. I am good at containing small bits of information.
                     I am convenient because I require little markup to use effectively.</p>
-              </div>
+                </div>
+              </a>
           </div>
         </div>
         <div class="col s12 m4">
           <div class="card red z-depth-1 hoverable">
-            <div class="card-content black-text">
-                <span class="card-title"><strong>Pred-hERG</strong></span>
-                <p>I am a very simple card. I am good at containing small bits of information.
-                  I am convenient because I require little markup to use effectively.</p>
-            </div>
+            <a href="http://labmol.com.br/predherg/" target="_blank">
+              <div class="card-content black-text">
+                  <span class="card-title"><strong>Pred-hERG</strong></span>
+                  <p>Pred-hERG is reliable, and user-friendly machine learning app based on statistically
+                    significant and externally predictive models of hERG blockage.</p>
+              </div>
+            </a>
           </div>
         </div>
         <div class="col s12 m4">
-          <div class="card blue z-depth-1 hoverable">
-            <div class="card-content black-text">
-              <span class="card-title"><strong>Pred-Skin</strong></span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-                I am convenient because I require little markup to use effectively.</p>
-            </div>
+          <div class="card yellow z-depth-1 hoverable">
+            <a href="http://www.labmol.com.br/predskin/" target="_blank">
+              <div class="card-content black-text">
+                <span class="card-title"><strong>Pred-Skin</strong></span>
+                <p>The Pred-Skin app is a fast, reliable, and user-friendly
+                   tool and an alternative method for assessing skin sensitization potential of chemical substances</p>
+              </div>
+            </a>
         </div>
       </div>
           <!-- <div class="col s12 m4">
@@ -269,6 +275,9 @@
               case "auth/account-exists-with-different-credential":
                 message = "Uma conta já existe com o mesmo endereço de e-mail, mas credenciais de login diferentes. Faça login usando um provedor associado a este endereço de e-mail.";
                 break;
+              case "auth/cancelled-popup-request":
+                  message = "Operação cancelada devido a outro popup conflitante que está aberto.";
+                  break;
               default:
                 message = "Feche para continuar!"
             }
