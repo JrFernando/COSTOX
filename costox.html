@@ -53,8 +53,6 @@
           <div class="col offset-m2"></div>
           <div class="col s12 m4">
               <div class="card red z-depth-1 hoverable">
-                <video autoplay id="vid">
-                <canvas id="canvas"></canvas></video>
                 <div class="card-content black-text">
                   <center><i class="large material-icons">camera_alt</i></center>
                   <span class="card-title">Take Your Picture</span>
@@ -64,14 +62,17 @@
           </div>
           <div class="col s12 m4">
               <div class="card yellow accent-3 z-depth-1 hoverable">
+                <form id="teste" action="teste.php" method="post" enctype="multipart/form-data">
                 <label for="file_up">
-                <div class="card-content black-text">
-                  <center><i class="large material-icons">file_upload</i></center>
-                  <span class="card-title">Upload Your Photo</span>
-                  <input id="file_up" style="display:none" type="file" />
-                  <p></p>
-                </div>
-              </label>
+                  <div class="card-content black-text">
+                    <center><i class="large material-icons">file_upload</i></center>
+                    <span class="card-title">Upload Your Photo</span>
+                    <input id="file_up" name="fileUp" style="display:none" type="file" onchange="teste();" />
+                    <p></p>
+                    <input type="submit">
+                  </div>
+                </label>
+              </form>
             </div>
           </div>
             <!-- <div class="col s12 m4">
