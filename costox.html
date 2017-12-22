@@ -77,6 +77,7 @@
           <div id="div_crop" class="col s12 m12" style="display: none">
             <center>
               <img id="img_crop" class="responsive-img" src="" />
+              <a id="btn_back" class="waves-effect waves-red red-text btn-flat" style="margin-top: 10px;">BACK</a>
               <a class="blue waves-effect waves-light btn"  style="margin-top: 10px;">CROP</a>
             </center>
           </div>
@@ -225,6 +226,10 @@
                 video.src = "";
               }
             });
+        });
+
+        $("#btn_back").click(function(e){
+            window.location.reload();
         });
 
         function hideCards(){
