@@ -52,8 +52,7 @@
 
         <div class="row">
           <div class="col offset-m2"></div>
-          <div class="col s12 m4">
-            <a href="#modalCamera" class="modal-trigger" onclick="teste();">
+          <div class="col s12 m4" id="div_take_picture">
               <div class="card red z-depth-1 hoverable">
                 <div class="card-content black-text">
                   <center><i class="large material-icons">camera_alt</i></center>
@@ -61,7 +60,6 @@
                   <p></p>
                 </div>
             </div>
-          </a>
           </div>
           <div class="col s12 m4">
             <div class="card yellow accent-3 z-depth-1 hoverable">
@@ -70,18 +68,27 @@
                   <center><i class="large material-icons">file_upload</i></center>
                   <span class="card-title">Upload Your Photo</span>
                   <input id="file_up" name="fileUp" style="display:none"
-                  type="file" accept="image/png, image/jpeg" />
+                  type="file" accept="image/png, image/jpeg, capture=camera" />
                 </div>
               </label>
             </div>
           </div>
 
-          <div id="div_crop" class="col s12" style="display: none">
+          <div id="div_crop" class="col s12 m12" style="display: none">
             <center>
               <img id="img_crop" class="responsive-img" src="" />
-              <a class="waves-effect waves-light btn"  style="margin-top: 10px;">TAKE</a>
+              <a class="blue waves-effect waves-light btn"  style="margin-top: 10px;">CROP</a>
             </center>
+          </div>
 
+          <div id="div_take" class="col s12 m12" style="display: none">
+            <center>
+              <video class="responsive-video" autoplay></video>
+              <canvas style="display: none"></canvas>
+            </center>
+            <center>
+              <a id="btnTake" class="blue waves-effect waves-light btn" style="margin-top: 10px;">TAKE</a>
+            </center>
           </div>
 
         </div>
@@ -96,33 +103,6 @@
             <a class="modal-action modal-close waves-effect waves-red btn-flat red-text">Fechar</a>
           </div>
         </div>
-
-        <!-- MODAL PARA CÂMERA -->
-        <div id="modalCamera" class="modal modal-fixed-footer">
-          <div class="modal-content">
-            <center>
-              <video autoplay  width="640" height="480" id="vid">
-              <canvas id="canvas"></canvas></video>
-            </center>
-          </div>
-          <div class="modal-footer">
-            <a class="modal-action waves-effect waves-blue btn-flat blue-text">TAKE</a>
-          </div>
-        </div>
-
-        <!-- MODAL PARA EXIBIÇÃO DA IMAGEM -->
-        <!-- <div id="modalImagem" class="modal modal-fixed-footer">
-          <div class="modal-content">
-            <center>
-              <div id="imgPreview">
-                <img id="testeIMG" />
-              </div>
-            </center>
-          </div>
-          <div class="modal-footer">
-            <a class="modal-action waves-effect waves-blue btn-flat blue-text">CROP</a>
-          </div>
-        </div> -->
 
       </section>
 
@@ -162,37 +142,6 @@
       <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
 
-
-      <!-- <script>
-          $("#file_up").on("change", function(){
-            if(typeof (FileReader) != "undefined"){
-                var image = $("#imgPreview");
-                image.empty();
-
-                var reader = new FileReader();
-                reader.onload = function(e){
-                  $("<img />", {
-                    "id": "img_pre",
-                    "src": e.target.result
-                  }).appendTo(image);
-                }
-                image.show();
-                reader.readAsDataURL($(this)[0].files[0]);
-                testeP();
-            }
-            else {
-              alert("Fudeu!");
-            }
-            $('#img_pre').Jcrop();
-       });
-       function testeP(){
-         //document.getElementById("teste").submit();
-         //preview();
-         $("#modalImagem").modal("open");
-
-
-       }
-      </script> -->
       <script>
         //EFETUA O UPLOAD DA IMAGEM
         $("#file_up").change(function(event) {
@@ -216,47 +165,81 @@
           });
         });
 
+        $('#div_take_picture').click(function(event){
+          var video = document.querySelector('video');
+          var canvas = document.querySelector('canvas');
+          var div = document.querySelector("#div_take");
+          var localMediaStream = null;
+
+          hideCards();
+          div.style = "display: block";
+
+          navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+          window.URL = window.URL || window.webkitURL;
+
+          navigator.getUserMedia({video : true}, function(stream) {
+              video.src = window.URL.createObjectURL(stream);
+              localMediaStream = stream;
+
+              localMediaStream.stop = function(){
+                this.getVideoTracks().forEach(function(track){
+                  track.stop();
+                });
+              }
+            }, function(){
+              alert("Erro ao acessar a câmera!")
+            });
+
+            $('#btnTake').click(function(event){
+              if (localMediaStream) {
+                var width = video.offsetWidth, height = video.offsetHeight;
+                var context;
+
+                canvas.width = width;
+                canvas.height = height;
+
+                context = canvas.getContext("2d");
+                context.drawImage(video, 0, 0, width, height);
+                //img.src = canvas.toDataURL('image/png');
+
+                div.style = "display: none";
+                showImage(canvas.toDataURL('image/png'));
+
+                //UPLOAD DA IMAGEM CAPTURADA
+                var form = new FormData();
+                form.append('fileUp', canvas.toDataURL('image/png'));
+
+                $.ajax({
+                  url: "upload.php",
+                  data: form,
+                  processData: false,
+                  contentType: false,
+                  type: 'POST',
+                  success: function (data) {
+                    pathFile = data;
+                    console.log(pathFile);
+                  }
+                });
+
+                localMediaStream.stop();
+                video.src = "";
+              }
+            });
+        });
+
         function hideCards(){
           var cards = $('.card');
           cards[0].style = "display: none";
           cards[1].style = "display: none";
-
-          document.getElementById("div_crop").style = "display : block";
         }
 
         function showImage(pathImage){
+          document.getElementById("div_crop").style = "display : block";
+
           var img = document.getElementById("img_crop");
           img.src = pathImage;
           $('#img_crop').Jcrop();
         }
-
-        function teste(){
-             var video = document.querySelector("#vid");
-             var canvas = document.querySelector('#canvas');
-            var ctx = canvas.getContext('2d');
-            var localMediaStream = null;
-
-            var onCameraFail = function(e) {
-                console.log('Não funcionou ://// .', e);
-            };
-
-            function snapshot() {
-                  if (localMediaStream) {
-                      ctx.drawImage(video, 0, 0);
-                  }
-              }
-              navigator.getUserMedia = navigator.getUserMedia
-              || navigator.webkitGetUserMedia
-              || navigator.mozGetUserMedia
-              || navigator.msGetUserMedia;
-              window.URL = window.URL || window.webkitURL;
-              navigator.getUserMedia({
-                  video : true
-                  }, function(stream) {
-                      video.src = window.URL.createObjectURL(stream);
-                      localMediaStream = stream;
-                      }, onCameraFail);
-                    }
       </script>
       <script>
         //INICIALIZAR MENU MOBILE
