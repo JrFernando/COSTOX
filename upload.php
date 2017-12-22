@@ -35,17 +35,22 @@
     $mime = $splited[0];
     $data = $splited[1];
 
-    $mime_split = explode(";", $mime, 2);
-    $mime_split = explode("/", $mime_split[0], 2);
-    if(count($mime_split) == 2){
-      $extension = $mime_split[1];
+    if(isset($_POST['filePath'])) $pathFile = $_POST['filePath'];
+    else {
+      $mime_split = explode(";", $mime, 2);
+      $mime_split = explode("/", $mime_split[0], 2);
+      if(count($mime_split) == 2){
+        $extension = $mime_split[1];
 
-      if($extension == "jpeg") $extension = "jpg";
-      $pathFile = "tmp/". md5(date()) . "." . $extension;
-      file_put_contents($pathFile, base64_decode($data));
+        if($extension == "jpeg") $extension = "jpg";
+        $pathFile = "tmp/". md5(date("d/M/Y  H:i:s")) . "." . $extension;
 
-      echo $pathFile;
+      }
     }
+
+    file_put_contents($pathFile, base64_decode($data));
+    echo $pathFile;
+
   } else {
     echo "Erro";
   }
