@@ -29,6 +29,23 @@
 
     echo $nomeImagem;
 
+  } else if($_POST['fileUp']) {
+
+    $splited = explode(',', substr($_POST['fileUp'], 5), 2);
+    $mime = $splited[0];
+    $data = $splited[1];
+
+    $mime_split = explode(";", $mime, 2);
+    $mime_split = explode("/", $mime_split[0], 2);
+    if(count($mime_split) == 2){
+      $extension = $mime_split[1];
+
+      if($extension == "jpeg") $extension = "jpg";
+      $pathFile = "tmp/". md5(date()) . "." . $extension;
+      file_put_contents($pathFile, base64_decode($data));
+
+      echo $pathFile;
+    }
   } else {
     echo "Erro";
   }
