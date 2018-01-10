@@ -78,7 +78,7 @@
             <center>
               <img id="img_crop" class="responsive-img" src="" />
               <a onclick="reload();" class="waves-effect waves-red red-text btn-flat" style="margin-top: 10px;">BACK</a>
-              <a class="blue waves-effect waves-light btn"  style="margin-top: 10px;">CROP</a>
+              <a id="btnCrop" class="blue waves-effect waves-light btn"  style="margin-top: 10px;">CROP</a>
             </center>
           </div>
 
@@ -145,9 +145,10 @@
       <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
 
       <script>
+        var pathFile;
+
         //EFETUA O UPLOAD DA IMAGEM
         $("#file_up").change(function(event) {
-          var pathFile;
           var form = new FormData();
           form.append('fileUp', event.target.files[0]);
 
@@ -227,6 +228,25 @@
                 video.src = "";
               }
             });
+        });
+
+        $('#btnCrop').click(function(e){
+          var canvas = document.querySelector('canvas');
+
+          //PROCESSAR COM TESSERACT
+          var form = new FormData();
+          form.append('pathFile', pathFile);
+
+          $.ajax({
+            url: "tesseract.php",
+            data: form,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function (data) {
+              console.log(data);
+            }
+          });
         });
 
         function reload(){
