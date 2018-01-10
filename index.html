@@ -1,111 +1,97 @@
 <!DOCTYPE html>
-  <html>
-    <head>
-      <meta charset="utf-8" />
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
-      <link type="text/css" rel="stylesheet" href="css/estilo.css" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <title>COSTOX</title>
-    </head>
-    <body>
-      <header>
-        <nav class="blue z-depth-1">
-          <div class="nav-wrapper container">
-            <a href="" class="brand-logo"><img src="images/logo-labmol.png" alt="Logo LabMol"/></a>
-            <a href="#" data-activates="menu-mobile" class="button-collapse waves-effect"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-              <!-- <li><a href="sass.html">Sass</a></li>
-              <li><a href="badges.html">Components</a></li> -->
-              <li><a id="displayName" class="dropdown-button waves-effect truncate" data-beloworigin="true"
-                data-hover="true" data-constrainwidth="true" data-activates="dropdownLogin">
-                <!-- PREENCHIDO COM JAVA SCRIPT -->
-              </a></li>
-            </ul>
-
-            <!-- MENU MOBILE -->
-             <ul class="side-nav" id="menu-mobile">
-              <li id="displayNameMobileLogado"></li>
-              <li><a id="displayNameMobile"  class="dropdown-button waves-effect" data-beloworigin="false" data-activates="dropdownLogin2"></a></li>
-              <!-- <li><a href="sass.html">Sass</a></li>
-              <li><a href="badges.html">Components</a></li> -->
-              <li class="divider"></li>
-              <li class="waves-effect" id="btnSairMobile" style="display: none"><a onclick="logout()">Sair</a></li>
-            </ul>
-          </div>
-        </nav>
-        <!-- Dados do menu dropdown -->
-        <ul id="dropdownLogin" class="dropdown-content">
-          <li><a class="waves-effect" onclick="loginGoogle()"><img src="icons/google.svg">Google</a></li>
-          <li><a class="waves-effect" onclick="loginFacebook()"><img src="icons/facebook.svg">Facebook</a></li>
-          <li style="display: none"><a class="waves-effect" onclick="logout()">Sair</a></li>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href="css/estilo.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>COSTOX</title>
+</head>
+<body>
+  <header>
+    <nav class="blue z-depth-1">
+      <div class="nav-wrapper container">
+        <a href="" class="brand-logo"><img src="images/logo-labmol.png" alt="Logo LabMol"/></a>
+        <a href="#" data-activates="menu-mobile" class="button-collapse waves-effect"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a id="displayName" class="dropdown-button waves-effect truncate" data-beloworigin="true"
+            data-hover="true" data-constrainwidth="true" data-activates="dropdownLogin">
+            <!-- PREENCHIDO COM JAVA SCRIPT -->
+          </a></li>
         </ul>
-        <!-- Dados do menu dropdown mobile-->
-        <ul id="dropdownLogin2" class="dropdown-content">
-          <li><a onclick="loginGoogle()"><img src="icons/google.svg">Google</a></li>
-          <li><a onclick="loginFacebook()"><img src="icons/facebook.svg">Facebook</a></li>
+
+        <!-- MENU MOBILE -->
+        <ul class="side-nav" id="menu-mobile">
+          <li id="displayNameMobileLogado"></li>
+          <li><a id="displayNameMobile"  class="dropdown-button waves-effect" data-beloworigin="false" data-activates="dropdownLogin2"></a></li>
+          <li class="divider"></li>
+          <li class="waves-effect" id="btnSairMobile" style="display: none"><a onclick="logout()">Sair</a></li>
         </ul>
-      </header>
-      <section id="main" class="container">
+      </div>
+    </nav>
+    <!-- Dados do menu dropdown -->
+    <ul id="dropdownLogin" class="dropdown-content">
+      <li><a class="waves-effect" onclick="loginGoogle()"><img src="icons/google.svg">Google</a></li>
+      <li><a class="waves-effect" onclick="loginFacebook()"><img src="icons/facebook.svg">Facebook</a></li>
+      <li style="display: none"><a class="waves-effect" onclick="logout()">Sair</a></li>
+    </ul>
+    <!-- Dados do menu dropdown mobile-->
+    <ul id="dropdownLogin2" class="dropdown-content">
+      <li><a onclick="loginGoogle()"><img src="icons/google.svg">Google</a></li>
+      <li><a onclick="loginFacebook()"><img src="icons/facebook.svg">Facebook</a></li>
+    </ul>
+  </header>
 
-      <!-- <div class="carousel carousel-slider z-depth-3">
-        <a class="carousel-item" href="#one!"><img src="https://lorempixel.com/800/400/food/1"></a>
-        <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/800/400/food/2"></a>
-        <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/800/400/food/3"></a>
-        <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/800/400/food/4"></a>
-      </div> -->
-
-      <div class="row">
-        <div class="col s12 m4">
-            <div class="card blue accent-3 z-depth-1 hoverable">
-              <a href="costox.html">
-              <div class="card-content black-text">
-                  <span class="card-title"><strong>COSTOX</strong></span>
-                  <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
-                </div>
-              </a>
+  <section id="main" class="container">
+    <div class="row">
+      <div class="col s12 m4">
+        <div class="card blue accent-3 z-depth-1 hoverable">
+          <a href="costox.html">
+            <div class="card-content black-text">
+              <span class="card-title"><strong>COSTOX</strong></span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+                I am convenient because I require little markup to use effectively.</p>
+              </div>
+            </a>
           </div>
         </div>
         <div class="col s12 m4">
           <div class="card red z-depth-1 hoverable">
             <a href="http://labmol.com.br/predherg/" target="_blank">
               <div class="card-content black-text">
-                  <span class="card-title"><strong>Pred-hERG</strong></span>
-                  <p>Pred-hERG is reliable, and user-friendly machine learning app based on statistically
-                    significant and externally predictive models of hERG blockage.</p>
+                <span class="card-title"><strong>Pred-hERG</strong></span>
+                <p>Pred-hERG is reliable, and user-friendly machine learning app based on statistically
+                  significant and externally predictive models of hERG blockage.</p>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col s12 m4">
+            <div class="card yellow z-depth-1 hoverable">
+              <a href="http://www.labmol.com.br/predskin/" target="_blank">
+                <div class="card-content black-text">
+                  <span class="card-title"><strong>Pred-Skin</strong></span>
+                  <p>The Pred-Skin app is a fast, reliable, and user-friendly
+                    tool and an alternative method for assessing skin sensitization potential of chemical substances</p>
+                  </div>
+                </a>
               </div>
-            </a>
-          </div>
-        </div>
-        <div class="col s12 m4">
-          <div class="card yellow z-depth-1 hoverable">
-            <a href="http://www.labmol.com.br/predskin/" target="_blank">
-              <div class="card-content black-text">
-                <span class="card-title"><strong>Pred-Skin</strong></span>
-                <p>The Pred-Skin app is a fast, reliable, and user-friendly
-                   tool and an alternative method for assessing skin sensitization potential of chemical substances</p>
+            </div>
+            <!-- ESTRUTURA DO MODAL -->
+            <div id="modalErro" class="modal">
+              <div class="modal-content">
+                <h4 class="red-text">Erro!</h4>
+                <p id="#messageModalErro"></p>
               </div>
-            </a>
-        </div>
-      </div>
-
-
-        <!-- ESTRUTURA DO MODAL -->
-        <div id="modalErro" class="modal">
-          <div class="modal-content">
-            <h4 class="red-text">Erro!</h4>
-            <p id="#messageModalErro"></p>
+              <div class="modal-footer">
+                <a class="modal-action modal-close waves-effect waves-red btn-flat red-text">Fechar</a>
+              </div>
+            </div>
           </div>
-          <div class="modal-footer">
-            <a class="modal-action modal-close waves-effect waves-red btn-flat red-text">Fechar</a>
-          </div>
-        </div>
-      </section>
+        </section>
 
-
-      <footer class="blue page-footer">
+        <footer class="blue page-footer">
           <div class="container">
             <div class="row">
               <div class="col l8 s12">
@@ -125,194 +111,20 @@
           </div>
           <div class="footer-copyright">
             <div class="container">
-            © 2017 Copyright
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+              © 2017 Copyright
+              <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
             </div>
           </div>
         </footer>
 
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/initComponentsMaterialize.js"></script>
 
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
-      <!-- FIREBASE -->
-      <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
-      <script>
-        //INICIALIZAR MENU MOBILE
-        $(".button-collapse").sideNav();
-        //INICIALIZAR MODAL
-        $('.modal').modal();
-        // INICIALIZAR CAROUSEL
-        $('.carousel.carousel-slider').carousel({fullWidth: true});
-
-        // Initialize Firebase
-        var config = {
-          apiKey: "AIzaSyB8DNlYFz20FGf-fUiK6CFYV5ebMRZSc7U",
-          authDomain: "costox-br.firebaseapp.com",
-          databaseURL: "https://costox-br.firebaseio.com",
-          projectId: "costox-br",
-          storageBucket: "costox-br.appspot.com",
-          messagingSenderId: "512966491595"
-        };
-        firebase.initializeApp(config);
-
-          firebase.auth().onAuthStateChanged(function(user) {
-            if(user){
-              console.log("Logado");
-              // Materialize.toast("Toast teste", 4000);
-              setNameDisplay(user.displayName, user.photoURL);
-
-              var lis = document.getElementById('dropdownLogin').getElementsByTagName("li");
-              lis[0].style.display = "none";
-              lis[1].style.display = "none";
-              lis[2].style.display = "block";
-              //PARA O MENU MOBILE
-              lis = document.getElementById('dropdownLogin2').getElementsByTagName("li");
-              lis[0].style.display = "none";
-              lis[1].style.display = "none";
-              document.getElementById("btnSairMobile").style.display = "block";
-
-              // if (user.emailVerified) {
-              //     // User is signed in
-              //     var email = user.email;
-              //     alert("logado: " + email);
-              //
-              // } else {
-              //     // User is not signed in
-              //     alert("Verifique o email para continuar!");
-              // }
-            } else {
-              console.log("Não logado");
-              setNameDisplay("Login", "");
-
-              var lis = document.getElementById('dropdownLogin').getElementsByTagName("li");
-              lis[0].style.display = "block";
-              lis[1].style.display = "block";
-              lis[2].style.display = "none";
-              //PARA MENU MOBILE
-              lis = document.getElementById('dropdownLogin2').getElementsByTagName("li");
-              lis[0].style.display = "block";
-              lis[1].style.display = "block";
-              document.getElementById("btnSairMobile").style.display = "none";
-            }
-          });
-
-        // LOGAR COM A CONTA DO GOOGLE
-        function loginGoogle(){
-          var provider = new firebase.auth.GoogleAuthProvider();
-          //provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-          // firebase.auth().useDeviceLanguage();
-
-          firebase.auth().signInWithPopup(provider).then(function(result) {
-            var token = result.credential.accessToken;
-            var user = result.user;
-
-          }).catch(function(error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-
-            showModalMessageError(errorCode);
-            console.error(errorCode);
-            console.error(errorMessage);
-          });
-        }
-
-        // LOGAR COM A CONTA DO FACEBOOK
-        function loginFacebook(){
-          console.log("loginFacebook()");
-          var provider = new firebase.auth.FacebookAuthProvider();
-          provider.setCustomParameters({
-            'display': 'popup'
-          });
-          //firebase.auth().useDeviceLanguage();
-
-          firebase.auth().signInWithPopup(provider).then(function(result) {
-            var token = result.credential.accessToken;
-            var user = result.user;
-
-            console.log(user.displayName + token);
-          }).catch(function(error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-
-            showModalMessageError(errorCode);
-            console.error(errorCode);
-            console.error(errorMessage);
-          });
-        }
-
-        function showModalMessageError(errorCode){
-          var message;
-            switch (errorCode) {
-              case "auth/network-request-failed":
-                message = "Erro na conexão! Por favor verifique sua conexão com a internet e tente novamente."
-                break;
-              case "auth/user-disabled":
-                message = "Usuário bloqueado! Entre contato para solucionar o problema."
-                break;
-              case "auth/internal-error":
-                message = "Ops! Encontramos um problema, tente mais uma vez. Caso o erro persista entre em contato."
-                break;
-              case "auth/account-exists-with-different-credential":
-                message = "Uma conta já existe com o mesmo endereço de e-mail, mas credenciais de login diferentes. Faça login usando um provedor associado a este endereço de e-mail.";
-                break;
-              case "auth/cancelled-popup-request":
-                  message = "Operação cancelada devido a outro popup conflitante que está aberto.";
-                  break;
-              default:
-                message = "Feche para continuar!"
-            }
-
-          var p = document.getElementById("#messageModalErro");
-          p.innerHTML = message;
-          $("#modalErro").modal("open");
-        }
-
-        function setNameDisplay(name, url){
-          var userDisplay = document.getElementById("displayName");
-          var html = "<div class=\"valign-wrapper\">";
-          // SE O USUÁRIO NÃO ESTIVER LOGADO É MOSTRADO UM ICONE
-          // CASO CONTRÁRIO E MOSTRADO A FOTO DO USUÁRIO
-          if (url == null || url == "") html += "<i class=\"material-icons left\">account_circle</i>";
-          else html += "<img id=\"userPhoto\" src=\"" + url + "\" class=\"circle responsive-img\" width=\"24px\" heigth=\"24px\">"
-
-          html += name + "<i class=\"material-icons right\">arrow_drop_down</i></div>";
-          userDisplay.innerHTML = html;
-
-          var userDisplay;
-          var html = "<div class=\"valign-wrapper\">";
-          // SE O USUÁRIO NÃO ESTIVER LOGADO É MOSTRADO UM ICONE
-          // CASO CONTRÁRIO E MOSTRADO A FOTO DO USUÁRIO
-          if (url == null || url == ""){
-             html += "<i class=\"material-icons left\">account_circle</i>";
-             html += "<p class=\"truncate name\">" + name + "</p><i class=\"material-icons right\">arrow_drop_down</i></div>";
-
-             document.getElementById("displayNameMobileLogado").style.display = "none";
-             document.getElementById("displayNameMobile").style.display = "block";
-             userDisplay = document.getElementById("displayNameMobile");
-          } else {
-             html = "<div class=\"user-view\"><div class=\"background\"><img src=\"images/office.jpg\"></div>";
-             html += "<a><img class=\"circle\" src=\"" + url + "\"></a>";
-             html += "<span class=\"lighten-4 white-text name truncate\">" + name +"</span></div>";
-
-             document.getElementById("displayNameMobile").style.display = "none";
-             document.getElementById("displayNameMobileLogado").style.display = "block";
-             userDisplay = document.getElementById("displayNameMobileLogado");
-          }
-
-          userDisplay.innerHTML = html;
-        }
-
-
-        //FUNÇÃO PARA EFETUAR O LOGOUT
-        function logout() {
-          firebase.auth().signOut().then(function() {
-            // Logout efetuado com sucesso.
-            //alert("Logout efetuado!");
-          }).catch(function(error) {
-          });
-        }
-      </script>
-    </body>
-  </html>
+        <!-- FIREBASE -->
+        <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
+        <script src="js/login.js"></script>
+</body>
+</html>
