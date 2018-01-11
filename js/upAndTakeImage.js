@@ -2,22 +2,39 @@ var pathFile;
 
 //AO CLICAR NO BOTÃO CROP
 $('#btnCrop').click(function(e){
-  var canvas = document.querySelector('canvas');
+// Adicionado Haarengl
+		$.post( 'crop.php', {
+		img:pathFile,
+		x: $('#x').val(),
+		y: $('#y').val(),
+		w: $('#w').val(),
+		h: $('#h').val()
+		},
+    function(){
+      showImage(pathFile + "?" + Math.random());
+      $(".jcrop-active").hide();
+      $("#img_crop").css("display", "block");
 
-  //PROCESSAR COM TESSERACT
-  var form = new FormData();
-  form.append('pathFile', pathFile);
+    });
+	  return false;
 
-  $.ajax({
-    url: "tesseract.php",
-    data: form,
-    processData: false,
-    contentType: false,
-    type: 'POST',
-    success: function (data) {
-      console.log(data);
-    }
-  });
+// Adicionado até aqui Haarengl
+  // var canvas = document.querySelector('canvas');
+  //
+  // //PROCESSAR COM TESSERACT
+  // var form = new FormData();
+  // form.append('pathFile', pathFile);
+  //
+  // $.ajax({
+  //   url: "tesseract.php",
+  //   data: form,
+  //   processData: false,
+  //   contentType: false,
+  //   type: 'POST',
+  //   success: function (data) {
+  //     console.log(data);
+  //   }
+  // });
 });
 
 //EFETUA O UPLOAD DA IMAGEM
@@ -123,5 +140,22 @@ function showImage(pathImage){
 
   var img = document.getElementById("img_crop");
   img.src = pathImage;
-  $('#img_crop').Jcrop();
+  $('#img_crop').Jcrop({
+    // Adicionado Haarengl
+    onChange: updateValuesCrop,
+    onSelect: updateValuesCrop
+  });
+    // Adicionado até aqui Haarengl
 }
+
+// Adicionado Haarengl
+function updateValuesCrop(c){
+		//joga os valores dos pronto do jcrop nos labels
+		$('#x').val(c.x);
+		$('#y').val(c.y);
+		$('#x2').val(c.x2);
+		$('#y2').val(c.y2);
+		$('#w').val(c.w);
+		$('#h').val(c.h);
+}
+// Adicionado até aqui Haarengl
