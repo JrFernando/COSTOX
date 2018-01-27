@@ -5,6 +5,10 @@
 
   // echo "<head><meta charset='utf-8'/></head>";
 
+  if(!file_exists("resultTesseract")){
+    mkdir("resultTesseract/");
+  }
+
   if(isset($_POST['pathFile'])){
     //Obtem nome do arquivo com extensão
     $name = explode('/', $_POST['pathFile']);

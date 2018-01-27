@@ -1,4 +1,9 @@
 <?php
+
+    if(!file_exists("tmp")){
+      mkdir("tmp/");
+    }
+
    if(isset($_FILES['fileUp'])){
     $imagem = $_FILES['fileUp'];
     $fileType = $imagem['type'];
