@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href="css/estilo.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
+  <title>COSTOX</title>
+</head>
+<body>
+  <header>
+    <nav class="blue z-depth-1">
+      <div class="nav-wrapper container">
+        <a href="" class="brand-logo"><img src="images/logo-labmol.png" alt="Logo LabMol"/></a>
+        <a href="#" data-activates="menu-mobile" class="button-collapse waves-effect"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a id="displayName" class="dropdown-button waves-effect truncate" data-beloworigin="true"
+            data-hover="true" data-constrainwidth="true" data-activates="dropdownLogin">
+            <!-- PREENCHIDO COM JAVA SCRIPT -->
+          </a></li>
+        </ul>
+
+        <!-- MENU MOBILE -->
+        <ul class="side-nav" id="menu-mobile">
+          <li id="displayNameMobileLogado"></li>
+          <li><a id="displayNameMobile"  class="dropdown-button waves-effect" data-beloworigin="false" data-activates="dropdownLogin2"></a></li>
+          <li class="divider"></li>
+          <li class="waves-effect" id="btnSairMobile" style="display: none"><a onclick="logout()">Sair</a></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Dados do menu dropdown -->
+    <ul id="dropdownLogin" class="dropdown-content">
+      <li><a class="waves-effect" onclick="loginGoogle()"><img src="icons/google.svg">Google</a></li>
+      <li><a class="waves-effect" onclick="loginFacebook()"><img src="icons/facebook.svg">Facebook</a></li>
+      <li style="display: none"><a class="waves-effect" onclick="logout()">Sair</a></li>
+    </ul>
+    <!-- Dados do menu dropdown mobile-->
+    <ul id="dropdownLogin2" class="dropdown-content">
+      <li><a onclick="loginGoogle()"><img src="icons/google.svg">Google</a></li>
+      <li><a onclick="loginFacebook()"><img src="icons/facebook.svg">Facebook</a></li>
+    </ul>
+  </header>
+
+  <section id="main" class="container">
+
+    <div class="row">
+      <div class="input-field col s10">
+        <input id="file_name" type="text" class="validate" value="teste.txt">
+        <label for="file_name">File Name</label>
+      </div>
+      <div class=" col s2">
+        <a onclick="teste();" class="waves-effect waves-light btn">enviar</a>
+      </div>
+    </div>
+
+    <table id="tabela" class="striped highlight responsive-table">
+        <thead>
+          <tr>
+              <th>Prefered Name</th>
+              <th>Chemical Name</th>
+              <th>Chemical Type</th>
+              <th>Use Type</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+      </table>
+      <br /><br />
+
+            <!-- ESTRUTURA DO MODAL -->
+            <div id="modalErro" class="modal">
+              <div class="modal-content">
+                <h4 class="red-text">Erro!</h4>
+                <p id="#messageModalErro"></p>
+              </div>
+              <div class="modal-footer">
+                <a class="modal-action modal-close waves-effect waves-red btn-flat red-text">Fechar</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="blue page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l8 s12">
+                <h5 class="white-text">LabMol</h5>
+                <p class="grey-text text-lighten-4">The Laboratory for Molecular Modeling and Drug Design was established in March 2009, at the Faculty of Pharmacy of the Federal University of Goiás. Our research group is focused on designing of new drug candidates for infectious diseases such as Chagas disease, schistosomiasis, leishmaniasis, malaria and tuberculosis, as well as for cancer. Another important goal of our group is the development of predictive models for pharmacokinetics and toxicity properties. The work developed by our group has resulted in publications in international indexed journals, abstracts, dissertations and awards in national and international meetings of Medicinal and Computational Chemistry area.</p>
+              </div>
+              <div class="col l2 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+              © 2017 Copyright
+              <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
+
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/initComponentsMaterialize.js"></script>
+
+        <!-- FIREBASE -->
+        <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
+        <script src="js/login.js"></script>
+        <script>
+          function teste(){
+            var v = $('#file_name').val();
+            console.log(v);
+
+            var form = new FormData();
+            form.append('pathFile', v);
+
+            $.get({
+              url: "new_find.php",
+              data: form,
+              processData: false,
+              contentType: false,
+              type: 'POST',
+              success: function (data) {
+                var v = JSON.parse(data);
+                addTable(v);
+              },
+              error: function () {
+                alert("ERRO");
+              }
+            });
+          }
+
+          function addTable(json){
+            var line;
+
+            json.forEach(function(obj, index){
+              line = "<tr><td>" + obj[4] + "</td>" +
+                        "<td>" + obj[5] + "</td>" +
+                        "<td>" + obj[6] + "</td>" +
+                        "<td>" + obj[13] + "</td></tr>";
+
+              $("#tabela").append(line);
+            });
+          }
+        </script>
+</body>
+</html>
