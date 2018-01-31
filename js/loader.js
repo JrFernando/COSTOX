@@ -1,3 +1,7 @@
+window.onload = function(){
+  hideLoader();
+};
+
 function showLoader(){
   $('#loader').show();
 }

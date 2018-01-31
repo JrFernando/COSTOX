@@ -56,7 +56,6 @@ body {
   z-index: 40;
   background: black;
   opacity: .8;
-  display: none;
 }
 .preloader-wrapper{
   position: fixed;
