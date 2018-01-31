@@ -81,23 +81,24 @@ $('#div_take_picture').click(function(event){
   hideCards();
   div.fadeIn();
 
-  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-  window.URL = window.URL || window.webkitURL;
-
-  navigator.getUserMedia({video : true}, function(stream) {
-    video.src = window.URL.createObjectURL(stream);
-    localMediaStream = stream;
-
-    localMediaStream.stop = function(){
-      this.getVideoTracks().forEach(function(track){
-        track.stop();
-      });
-    }
-  }, function(){
-    // alert("Erro ao acessar a câmera!");
-		showMessageStatus("Please enable the camera.");
-  });
-
+	var constraints = { video: { facingMode: "environment" } };
+	navigator.mediaDevices.getUserMedia(constraints)
+		.then(function(mediaStream) {
+			video.srcObject = mediaStream;
+			localMediaStream = mediaStream;
+			video.onloadedmetadata = function(e){
+				video.play();
+			};
+			localMediaStream.stop = function(){
+		      this.getVideoTracks().forEach(function(track){
+		        track.stop();
+		      });
+		    }
+		})
+		.catch (function(err){
+			showMessageStatus("Please enable the camera.");
+		});
+		
 	showMessageStatus("Take a good picture of a huge, printed text.");
 	//CAPTURA A IMAGEM
 	$('#btnTake').click(function(event){
