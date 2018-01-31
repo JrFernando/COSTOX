@@ -2,39 +2,52 @@ var pathFile;
 
 //AO CLICAR NO BOTÃO CROP
 $('#btnCrop').click(function(e){
-// Adicionado Haarengl
-		$.post( 'crop.php', {
-		img:pathFile,
-		x: $('#x').val(),
-		y: $('#y').val(),
-		w: $('#w').val(),
-		h: $('#h').val()
-		},
-    function(){
-      showImage(pathFile + "?" + Math.random());
-      $(".jcrop-active").hide();
-      $("#img_crop").css("display", "block");
 
-    });
-	  return false;
+	showLoader();
 
-// Adicionado até aqui Haarengl
-  // var canvas = document.querySelector('canvas');
-  //
-  // //PROCESSAR COM TESSERACT
-  // var form = new FormData();
-  // form.append('pathFile', pathFile);
-  //
-  // $.ajax({
-  //   url: "tesseract.php",
-  //   data: form,
-  //   processData: false,
-  //   contentType: false,
-  //   type: 'POST',
-  //   success: function (data) {
-  //     console.log(data);
-  //   }
-  // });
+	// Adicionado Haarengl
+	$.post( 'crop.php', {
+	img:pathFile,
+	x: $('#x').val(),
+	y: $('#y').val(),
+	w: $('#w').val(),
+	h: $('#h').val()
+	},
+  function(){
+    showImage(pathFile + "?" + Math.random());
+    $(".jcrop-active").hide();
+    $("#img_crop").css("display", "block");
+
+  });
+
+	// Adicionado até aqui Haarengl
+	var canvas = document.querySelector('canvas');
+
+	//PROCESSAR COM TESSERACT
+	var form = new FormData();
+	form.append('pathFile', pathFile);
+
+	$.ajax({
+	  url: "tesseract.php",
+	  data: form,
+	  processData: false,
+	  contentType: false,
+	  type: 'POST',
+	  success: function (data) {
+	    console.log(data);
+			processFile(data);
+
+			// if(t){
+				hideDivCrop();
+				showDivResult();
+			// } else {
+			// 	$(".jcrop-active").show();
+			// 	$("#img_crop").css("display", "none");
+			// 	showDivCrop();
+			// }
+			hideLoader();
+	  }
+	});
 });
 
 //EFETUA O UPLOAD DA IMAGEM
@@ -140,8 +153,23 @@ function reload(){
 };
 
 function hideCards(){
-  var cards = $('#cards');
-	cards.hide();
+	$('#cards').hide();
+}
+
+function showCards(){
+	$('#cards').show();
+}
+
+function hideDivCrop() {
+	$("#div_crop").hide();
+}
+
+function showDivCrop() {
+	$("#div_crop").show();
+}
+
+function showDivResult(){
+	$('#div_resultado').show();
 }
 
 function showImage(pathImage){

@@ -19,7 +19,7 @@
     //Adiciona pasta e .txt
     $name = "resultTesseract/" . $name . ".txt";
 
-    // echo $name;
+    echo $name;
 
     $file = fopen($name, "w");
 
@@ -30,5 +30,5 @@
     fwrite($file, $result);
     fclose($file);
 
-    echo "Arquivo salvo com sucesso!";
+    // echo "Arquivo salvo com sucesso!";
   }
