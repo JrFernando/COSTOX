@@ -38,6 +38,7 @@ $('#btnCrop').click(function(e){
 			processFile(data);
 
 			// if(t){
+				hideStatus();
 				hideDivCrop();
 				showDivResult();
 			// } else {
@@ -93,9 +94,11 @@ $('#div_take_picture').click(function(event){
       });
     }
   }, function(){
-    alert("Erro ao acessar a câmera!")
+    // alert("Erro ao acessar a câmera!");
+		showMessageStatus("Please enable the camera.");
   });
 
+	showMessageStatus("Take a good picture of a huge, printed text.");
 	//CAPTURA A IMAGEM
 	$('#btnTake').click(function(event){
 	  if (localMediaStream) {
@@ -173,6 +176,7 @@ function showDivResult(){
 }
 
 function showImage(pathImage){
+	showMessageStatus("Cut the image so the text is clearly visible.");
   $("#div_crop").show();
 
   var img = document.getElementById("img_crop");

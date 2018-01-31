@@ -65,9 +65,9 @@
       </header>
       <section id="main" class="container">
 
-        <div id="status" class="row"  style="display: none">
+        <div id="status" class="row">
           <center>
-            <h5>Habite a câmera</h5>
+            <h5 id="messageStatus"></h5>
           </center>
         </diV>
 
@@ -98,7 +98,7 @@
 
         <div id="div_take" style="display: none" class="row">
           <center>
-            <video class="responsive-video" autoplay></video>
+            <video style="border: solid 1px gray;" class="responsive-video" autoplay></video>
           </center>
           <center>
             <a onclick="reload();" class="waves-effect waves-red red-text btn-flat" style="margin-top: 10px;">BACK</a>
@@ -196,6 +196,7 @@
 
       <script src="js/Jcrop.js"></script>
       <script src="js/glfx.min.js"></script>
+      <script src="js/status.js"></script>
       <script src="js/showResult.js"></script>
       <script src="js/upAndTakeImage.js"></script>
 
