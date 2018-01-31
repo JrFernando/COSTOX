@@ -3,10 +3,8 @@
 
   use thiagoalessio\TesseractOCR\TesseractOCR;
 
-  // echo "<head><meta charset='utf-8'/></head>";
-
-  if(!file_exists("resultTesseract")){
-    mkdir("resultTesseract/");
+  if(!file_exists(__DIR__ . "/resultTesseract")){
+    mkdir(__DIR__ . "/resultTesseract");
   }
 
   if(isset($_POST['pathFile'])){
@@ -21,7 +19,7 @@
     //Adiciona pasta e .txt
     $name = "resultTesseract/" . $name . ".txt";
 
-    echo $name;
+    // echo $name;
 
     $file = fopen($name, "w");
 

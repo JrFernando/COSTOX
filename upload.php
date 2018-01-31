@@ -1,7 +1,7 @@
 <?php
 
-    if(!file_exists("tmp")){
-      mkdir("tmp/");
+    if(!file_exists(__DIR__ . "/tmp")){
+      mkdir(__DIR__ . "/tmp");
     }
 
    if(isset($_FILES['fileUp'])){
