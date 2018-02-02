@@ -1,8 +1,8 @@
 <?php
   require_once __DIR__ . '/util/simplexlsx.class.php';
 
-  define("BD", "COSMETICS_Inventory.xlsx");
-  // define("BD", "bd_debug.xlsx");
+  define("BD", "bd/COSMETICS_Inventory.xlsx");
+  // define("BD", "bd/bd_debug.xlsx");
 
   if(isset($_POST['pathFile'])){
     $pathFile = $_POST['pathFile'];
