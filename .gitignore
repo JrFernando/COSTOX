@@ -21,6 +21,4 @@ Thumbs.db
 /resultTesseract
 
 # BD
-COSMETICS_Inventory_curated.sdf
-COSMETICS_Inventory.xlsx
-bd_debug.xlsx
+/bd
