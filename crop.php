@@ -1,7 +1,7 @@
 <?php
 if( $_SERVER['REQUEST_METHOD'] == 'POST' )
 {
-	include( 'm2brimagem.class.php' );
+	include( 'util/m2brimagem.class.php' );
 	$oImg = new m2brimagem( $_POST['img'] );
 	if( $oImg->valida() == 'OK' )
 	{
