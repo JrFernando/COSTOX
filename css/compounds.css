@@ -1,0 +1,59 @@
+.compound_image {
+    padding: 0;
+    margin: 0;
+    width: 300px;
+    vertical-align: top;
+}
+
+.compound_image img {
+    width: 100%;
+    height:300px;
+    margin: 0;
+    padding: 0;
+}
+
+.compound_info {
+    margin: 0;
+    padding:0;
+    padding-left: 15px;
+}
+
+.compound_info h3 {
+    font-size: 1.3em;
+    margin: 26px 0 0;
+}
+
+.compound_info p {
+    font-size: 1em;
+    margin: 10px 0 0;
+}
+
+#tabela tr > td {
+    padding-top: 16px;
+    padding-bottom: 26px;
+    border-bottom: rgb(225, 225, 255) 1px solid;
+}
+
+@media only screen and (max-width: 993px){
+    .compound_image {
+        width: 100%;
+        display: block;
+    }
+    .compound_image img {
+        width: 200px;
+        height: auto;
+    }
+    .compound_info {
+        width: 100%;
+        display: block;
+    }
+
+    #tabela tr > td:first-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    #tabela tr > td:last-child {
+        padding-top: 0;
+    }
+  }

@@ -66,3 +66,8 @@ body {
 #status{
   display: none;
 }
+
+#title_results {
+  font-size: 2em;
+  margin-bottom: 0;
+}

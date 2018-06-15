@@ -1,5 +1,5 @@
 {
     "require": {
-        "thiagoalessio/tesseract_ocr": "^2.1"
+        "thiagoalessio/tesseract_ocr": "^2.4"
     }
 }

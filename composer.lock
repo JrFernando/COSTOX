@@ -1,24 +1,23 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "4992a9e3aa93c6b9f568df1766773b6d",
-    "content-hash": "249dc5943b7bfc79fa0298f3b3e2b987",
+    "content-hash": "c1746128ecf93741709f934f8c34bb71",
     "packages": [
         {
             "name": "thiagoalessio/tesseract_ocr",
-            "version": "2.1.0",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thiagoalessio/tesseract-ocr-for-php.git",
-                "reference": "a110c32c09d24144512fa73b60c907a9eac849a0"
+                "reference": "a8b7a9ba7919e683b9915668f3d0d67ebba6d266"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thiagoalessio/tesseract-ocr-for-php/zipball/a110c32c09d24144512fa73b60c907a9eac849a0",
-                "reference": "a110c32c09d24144512fa73b60c907a9eac849a0",
+                "url": "https://api.github.com/repos/thiagoalessio/tesseract-ocr-for-php/zipball/a8b7a9ba7919e683b9915668f3d0d67ebba6d266",
+                "reference": "a8b7a9ba7919e683b9915668f3d0d67ebba6d266",
                 "shasum": ""
             },
             "require": {
@@ -26,7 +25,7 @@
             },
             "require-dev": {
                 "codacy/coverage": "dev-master",
-                "phpunit/phpunit": "^6.5"
+                "phpunit/php-code-coverage": "^4.0.8"
             },
             "type": "library",
             "autoload": {
@@ -50,7 +49,7 @@
                 "Tesseract",
                 "text recognition"
             ],
-            "time": "2017-12-14 15:06:32"
+            "time": "2018-05-11T14:22:47+00:00"
         }
     ],
     "packages-dev": [],

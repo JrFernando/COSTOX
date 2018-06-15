@@ -7,6 +7,8 @@
    if(isset($_FILES['fileUp'])){
     $imagem = $_FILES['fileUp'];
     $fileType = $imagem['type'];
+    $imagem['name'] = explode('.', $imagem['name']);
+    $imagem['name'] = md5(date("d/M/Y  H:i:s")) . '.'.$imagem['name'][count($imagem['name']) - 1];
     $nomeImagem = "tmp/" . $imagem['name'];
 
     move_uploaded_file($imagem["tmp_name"], $nomeImagem);

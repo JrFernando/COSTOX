@@ -34,18 +34,15 @@ $('#btnCrop').click(function(e){
 	  contentType: false,
 	  type: 'POST',
 	  success: function (data) {
-	    console.log(data);
-			processFile(data);
+			var result = JSON.parse(data);
+			
+			if (result['result']) {
+				processText(result['result']);
+			}
 
-			// if(t){
-				hideStatus();
-				hideDivCrop();
-				showDivResult();
-			// } else {
-			// 	$(".jcrop-active").show();
-			// 	$("#img_crop").css("display", "none");
-			// 	showDivCrop();
-			// }
+			hideStatus();
+			hideDivCrop();
+			showDivResult();
 			hideLoader();
 	  }
 	});

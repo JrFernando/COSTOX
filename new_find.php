@@ -9,7 +9,7 @@
     $resutados = NULL;
 
     //Abertura do arquivo retornado pelo Tesseract
-    $file = fopen($pathFile, "r");
+    $file = fopen($_POST['pathFile'], "r");
 
     // Obtém linha por linha do arquivo
     while(($string = fgets($file)) !== false){
