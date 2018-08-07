@@ -1,6 +1,6 @@
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyB8DNlYFz20FGf-fUiK6CFYV5ebMRZSc7U",
+  apiKey: "API_KEY",
   authDomain: "costox-br.firebaseapp.com",
   databaseURL: "https://costox-br.firebaseio.com",
   projectId: "costox-br",
